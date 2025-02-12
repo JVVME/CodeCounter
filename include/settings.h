@@ -13,3 +13,5 @@
     #define FCONFIG_WINDOWS 0
     #define FCONFIG_LINUX 0
 #endif
+
+extern bool recursion;

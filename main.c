@@ -1,5 +1,7 @@
 #include "include/thread_control.h"
 
+bool recursion;
+
 int main(int argc, char const *argv[])
 {
     if(argc <= 1){
@@ -8,9 +10,13 @@ int main(int argc, char const *argv[])
     }
 
     bool single_file  = false;
+    recursion = true;
     for (int i = 1; i < argc; i++) {
         if (strcmp(argv[i], "--file") == 0) {
             single_file = true;
+        }
+        if (strcmp(argv[i], "--norecursion") == 0) {
+            recursion = false;
         }
     }
     

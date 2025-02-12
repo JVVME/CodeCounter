@@ -127,7 +127,7 @@ void find_files(const char* path, file_node *flist){
             }
         }
         // 如果是目录，递归查找
-        else if (find_file_data.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) {
+        else if ((find_file_data.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) && recursion) {
             find_files(full_path, flist);  // 递归调用，查找子目录
         }
 
@@ -171,7 +171,7 @@ void find_files(const char* path, file_node *flist){
             }
         }
         // 如果是目录，递归查找
-        else if (S_ISDIR(file_stat.st_mode)) {  // 检查是否是目录
+        else if (S_ISDIR(file_stat.st_mode && recursion)) {  // 检查是否是目录
             find_files(full_path, flist);  // 递归调用，查找子目录
         }
     }
